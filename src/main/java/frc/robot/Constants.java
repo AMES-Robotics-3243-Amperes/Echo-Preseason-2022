@@ -13,9 +13,12 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    // joyutil stuff (keep deadzone positive)
+    // fun driving stuff (keep deadzones positive)
     public final double innerDeadzone = 0.06;
     public final double outerDeadzone = 0.08;
+
+    public final boolean doInnerDeadzone = true;
+    public final boolean doOuterDeadzone = true;
 
     // channels
     public final int leftFrontMotorChannel = 9;

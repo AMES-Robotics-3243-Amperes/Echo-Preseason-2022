@@ -44,8 +44,8 @@ public class DriveCommand extends CommandBase {
     double rightTriggerAdjustment = math.remap(true, driveController.getRightTriggerAxis(), 0, 1, 1, constants.rightTriggerSpeedModifier);
     double leftTriggerAdjustment = math.remap(true, driveController.getLeftTriggerAxis(), 0, 1, 1, constants.leftTriggerSpeedModifier);
 
-    m_subsystem.driveLeftMotors(-driveController.getDeadzoneLeftY(true, true) * constants.driveSpeed * rightTriggerAdjustment * leftTriggerAdjustment);
-    m_subsystem.driveRightMotors(driveController.getDeadzoneRightY(true, true) * constants.driveSpeed * rightTriggerAdjustment * leftTriggerAdjustment);
+    m_subsystem.driveLeftMotors(-driveController.getDeadzoneLeftY(constants.doInnerDeadzone, constants.doOuterDeadzone) * constants.driveSpeed * rightTriggerAdjustment * leftTriggerAdjustment);
+    m_subsystem.driveRightMotors(driveController.getDeadzoneRightY(constants.doOuterDeadzone, constants.doOuterDeadzone) * constants.driveSpeed * rightTriggerAdjustment * leftTriggerAdjustment);
   }
 
   // Called once the command ends or is interrupted.
@@ -54,7 +54,5 @@ public class DriveCommand extends CommandBase {
 
   // Returns true when the command should end.
   @Override
-  public boolean isFinished() {
-    return false;
-  }
+  public boolean isFinished() { return false; }
 }
