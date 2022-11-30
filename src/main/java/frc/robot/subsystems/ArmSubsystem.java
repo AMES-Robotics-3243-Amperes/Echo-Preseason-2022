@@ -4,11 +4,21 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
-public class ExampleSubsystem extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  public ExampleSubsystem() {}
+public class ArmSubsystem extends SubsystemBase {
+  // constants :)
+  Constants constants = new Constants();
+
+  VictorSP armMotor = new VictorSP(constants.armMotorChannel);
+
+  public void moveArm(double input) {
+    armMotor.set(input);
+  }
+
+  public ArmSubsystem() {}
 
   @Override
   public void periodic() {
