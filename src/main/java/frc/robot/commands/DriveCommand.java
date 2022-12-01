@@ -13,9 +13,9 @@ import frc.robot.Math;
 
 /** An example command that uses an example subsystem. */
 public class DriveCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final DriveTrainSubsystem m_subsystem;
-  
+
   JoyUtil driveController;
 
   private Constants constants = new Constants();
@@ -40,12 +40,17 @@ public class DriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // turn the value read from each trigger to a value from 1 to the value set in constants
-    double rightTriggerAdjustment = math.remap(true, driveController.getRightTriggerAxis(), 0, 1, 1, constants.rightTriggerSpeedModifier);
-    double leftTriggerAdjustment = math.remap(true, driveController.getLeftTriggerAxis(), 0, 1, 1, constants.leftTriggerSpeedModifier);
+    // turn the value read from each trigger to a value from 1 to the value set in
+    // constants
+    double rightTriggerAdjustment = math.remap(true, driveController.getRightTriggerAxis(), 0, 1, 1,
+        constants.rightTriggerSpeedModifier);
+    double leftTriggerAdjustment = math.remap(true, driveController.getLeftTriggerAxis(), 0, 1, 1,
+        constants.leftTriggerSpeedModifier);
 
-    m_subsystem.driveLeftMotors(-driveController.getDeadzoneLeftY(constants.doInnerDeadzone, constants.doOuterDeadzone) * constants.driveSpeed * rightTriggerAdjustment * leftTriggerAdjustment);
-    m_subsystem.driveRightMotors(driveController.getDeadzoneRightY(constants.doOuterDeadzone, constants.doOuterDeadzone) * constants.driveSpeed * rightTriggerAdjustment * leftTriggerAdjustment);
+    m_subsystem.driveLeftMotors(-driveController.getDeadzoneLeftY(constants.doInnerDeadzone, constants.doOuterDeadzone)
+        * constants.driveSpeed * rightTriggerAdjustment * leftTriggerAdjustment);
+    m_subsystem.driveRightMotors(driveController.getDeadzoneRightY(constants.doOuterDeadzone, constants.doOuterDeadzone)
+        * constants.driveSpeed * rightTriggerAdjustment * leftTriggerAdjustment);
   }
 
   // Called once the command ends or is interrupted.
@@ -54,5 +59,7 @@ public class DriveCommand extends CommandBase {
 
   // Returns true when the command should end.
   @Override
-  public boolean isFinished() { return false; }
+  public boolean isFinished() {
+    return false;
+  }
 }

@@ -11,7 +11,7 @@ import frc.robot.Constants;
 public class DriveTrainSubsystem extends SubsystemBase {
   // constants :)
   Constants constants = new Constants();
-  
+
   VictorSP leftFrontMotor = new VictorSP(constants.leftFrontMotorChannel);
   VictorSP leftBackMotor = new VictorSP(constants.leftBackMotorChannel);
   VictorSP rightFrontMotor = new VictorSP(constants.rightFrontMotorChannel);

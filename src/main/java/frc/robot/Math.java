@@ -1,10 +1,11 @@
 package frc.robot;
 
 public class Math {
-    public double abs(double input) { return input < 0 ? -input : input; }
+    public double abs(double input) {
+        return input < 0 ? -input : input;
+    }
 
-    public double remap(boolean clamp, double input, double minIn, double maxIn, double minOut, double maxOut)
-    {
+    public double remap(boolean clamp, double input, double minIn, double maxIn, double minOut, double maxOut) {
         double inRange = maxIn - minIn;
         double outRange = maxOut - minOut;
 
@@ -12,7 +13,8 @@ public class Math {
         input *= outRange;
         input += minOut;
 
-        // move the input to the nearest bound of the ouput if clamp is true and it isn't in the output range
+        // move the input to the nearest bound of the ouput if clamp is true and it
+        // isn't in the output range
         // sorry for spaghetti code
         // lmao
         if (clamp && input < minOut && minOut < maxOut)

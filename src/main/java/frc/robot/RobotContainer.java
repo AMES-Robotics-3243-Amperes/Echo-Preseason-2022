@@ -21,16 +21,17 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   JoyUtil drivingController = new JoyUtil(0);
+  JoyUtil bucketController = new JoyUtil(1);
 
   // The robot's subsystems and commands are defined here...
   DriveTrainSubsystem m_DriveTrainSubsystem = new DriveTrainSubsystem();
   DriveCommand m_DriveCommand = new DriveCommand(m_DriveTrainSubsystem, drivingController);
 
   ArmSubsystem m_ArmSubsystem = new ArmSubsystem();
-  ArmCommand m_ArmCommand = new ArmCommand(m_ArmSubsystem, drivingController);
+  ArmCommand m_ArmCommand = new ArmCommand(m_ArmSubsystem, drivingController, bucketController);
 
   ElevatorSubsystem m_ElevatorSubsystem = new ElevatorSubsystem();
-  ElevatorCommand m_ElevatorCommand = new ElevatorCommand(m_ElevatorSubsystem, drivingController);
+  ElevatorCommand m_ElevatorCommand = new ElevatorCommand(m_ElevatorSubsystem, drivingController, bucketController);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

@@ -13,18 +13,16 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   // motor definitions :)
   VictorSP elevatorTopMotor = new VictorSP(constants.elevatorTopMotorChannel);
-  //VictorSP elevatorBottomMotor = new VictorSP(constants.elevatorBottomMotorChannel);
 
   /** Creates a new ElevatorSubsystem. */
   public ElevatorSubsystem() {}
 
-  public void moveElevator(double input)
-  {
+  public void moveElevator(double input) {
     if (input == 0)
       elevatorTopMotor.stopMotor();
     else
       elevatorTopMotor.set(input);
-    //elevatorBottomMotor.set(input);
+    // elevatorBottomMotor.set(input);
   }
 
   @Override

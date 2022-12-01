@@ -11,6 +11,7 @@ import frc.robot.subsystems.ElevatorSubsystem;
 
 import frc.robot.Constants;
 import frc.robot.JoyUtil;
+import frc.robot.Math;
 
 public class ElevatorCommand extends CommandBase {
 
@@ -19,19 +20,22 @@ public class ElevatorCommand extends CommandBase {
 
   // epic gamer constants
   Constants constants = new Constants();
+  Math math = new Math();
 
   // :| our subsystem
   ElevatorSubsystem m_subsystem;
 
   // controller
   JoyUtil driveController;
+  JoyUtil bucketController;
 
   // limit switch
   DigitalInput limitSwitch = new DigitalInput(constants.elevatorLimitSwitchChannel);
 
   /** Creates a new ElevatorCommand. */
-  public ElevatorCommand(ElevatorSubsystem subsystem, JoyUtil _driveController) {
+  public ElevatorCommand(ElevatorSubsystem subsystem, JoyUtil _driveController, JoyUtil _bucketController) {
     driveController = _driveController;
+    bucketController = _bucketController;
     m_subsystem = subsystem;
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -44,18 +48,24 @@ public class ElevatorCommand extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() 
-  {
+  public void execute() {
     boolean isAtTop = limitSwitch.get();
     double moveSpeed = 0;
 
-    moveSpeed -= driveController.getAButton() || driveController.getLeftBumper() ? 1 : 0;
-    moveSpeed += driveController.getYButton() || driveController.getRightBumper() ? 1 : 0;
+    moveSpeed += driveController.getYButton() ? 1 : 0;
+    moveSpeed += bucketController.getYButton() ? 1 : 0;
+    moveSpeed -= driveController.getAButton() ? 1 : 0;
+    moveSpeed -= bucketController.getAButton() ? 1 : 0;
+
+    moveSpeed -= driveController.getLeftBumper() ? 1 : 0;
+    moveSpeed -= bucketController.getLeftBumper() ? 1 : 0;
+    moveSpeed += driveController.getRightBumper() ? 1 : 0;
+    moveSpeed += bucketController.getRightBumper() ? 1 : 0;
 
     // make sure the speed doesn't double if multiple
     // buttons of the same direction are pressed
     if (moveSpeed < -1 || moveSpeed > 1)
-      moveSpeed /= 2;
+      moveSpeed /= math.abs(moveSpeed);
 
     // multiply the correct speed (if the limit switch is pressed, don't move up)
     if (moveSpeed > 0)
