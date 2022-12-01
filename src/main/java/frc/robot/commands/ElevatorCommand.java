@@ -73,9 +73,9 @@ public class ElevatorCommand extends CommandBase {
     else if (moveSpeed < 0)
       moveSpeed *= constants.elevatorSpeedDown;
 
-    if (driveController.getBButton() || moveSpeed < 0 || isAtTop)
+    if (driveController.getBButton() || bucketController.getBButton() || moveSpeed < 0 || isAtTop)
       moveToTop = false;
-    else if (driveController.getXButton())
+    else if (driveController.getXButton() || bucketController.getXButton())
       moveToTop = true;
 
     // if move to top is true, move the elevator up
