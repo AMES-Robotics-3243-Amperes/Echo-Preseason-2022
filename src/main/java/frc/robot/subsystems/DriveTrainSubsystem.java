@@ -12,10 +12,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
   // constants :)
   Constants constants = new Constants();
 
-  VictorSP leftFrontMotor = new VictorSP(constants.leftFrontMotorChannel);
-  VictorSP leftBackMotor = new VictorSP(constants.leftBackMotorChannel);
-  VictorSP rightFrontMotor = new VictorSP(constants.rightFrontMotorChannel);
-  VictorSP rightBackMotor = new VictorSP(constants.rightBackMotorChannel);
+  private VictorSP leftFrontMotor = new VictorSP(constants.leftFrontMotorChannel);
+  private VictorSP leftBackMotor = new VictorSP(constants.leftBackMotorChannel);
+  private VictorSP rightFrontMotor = new VictorSP(constants.rightFrontMotorChannel);
+  private VictorSP rightBackMotor = new VictorSP(constants.rightBackMotorChannel);
 
   public void driveLeftMotors(double input) {
     leftFrontMotor.set(input);

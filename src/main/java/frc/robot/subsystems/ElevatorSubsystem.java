@@ -12,7 +12,7 @@ public class ElevatorSubsystem extends SubsystemBase {
   Constants constants = new Constants();
 
   // motor definitions :)
-  VictorSP elevatorTopMotor = new VictorSP(constants.elevatorTopMotorChannel);
+  private VictorSP elevatorTopMotor = new VictorSP(constants.elevatorTopMotorChannel);
 
   /** Creates a new ElevatorSubsystem. */
   public ElevatorSubsystem() {}

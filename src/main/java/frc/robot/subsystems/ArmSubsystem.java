@@ -12,7 +12,7 @@ public class ArmSubsystem extends SubsystemBase {
   // constants :)
   Constants constants = new Constants();
 
-  VictorSP armMotor = new VictorSP(constants.armMotorChannel);
+  private VictorSP armMotor = new VictorSP(constants.armMotorChannel);
 
   public void moveArm(double input) {
     armMotor.set(input);

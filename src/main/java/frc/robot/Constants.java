@@ -41,4 +41,8 @@ public final class Constants {
     public final double elevatorSpeedUpLimit = 0.38;
     public final double elevatorSpeedUpManual = 0.5;
     public final double elevatorSpeedDown = 0.15;
+
+    // auto stuff
+    public final int driveCalls = 200;
+    public final double autoDriveSpeed = 0.5;
 }
