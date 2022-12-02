@@ -31,7 +31,7 @@ public class AutoDriveCommand extends CommandBase {
   @Override
   public void initialize()
   {
-    m_subsystem.driveLeftMotors(constants.autoDriveSpeed);
+    m_subsystem.driveLeftMotors(-constants.autoDriveSpeed);
     m_subsystem.driveRightMotors(constants.autoDriveSpeed);
 
     calls = 0;
