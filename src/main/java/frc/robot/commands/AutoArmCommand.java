@@ -7,20 +7,20 @@ package frc.robot.commands;
 import frc.robot.Constants;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.ArmSubsystem;
 
-public class AutoDriveCommand extends CommandBase {
+public class AutoArmCommand extends CommandBase {
   
   // used to manage how long the auto runs
   private long calls = 0;
 
   // subsystem
-  private final DriveTrainSubsystem m_subsystem;
+  private final ArmSubsystem m_subsystem;
 
   Constants constants = new Constants();
 
   /** Creates a new AutoDrive. */
-  public AutoDriveCommand(DriveTrainSubsystem subsystem) {
+  public AutoArmCommand(ArmSubsystem subsystem) {
     m_subsystem = subsystem;
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -31,8 +31,7 @@ public class AutoDriveCommand extends CommandBase {
   @Override
   public void initialize()
   {
-    m_subsystem.driveLeftMotors(-constants.autoDriveSpeed);
-    m_subsystem.driveRightMotors(constants.autoDriveSpeed);
+    m_subsystem.moveArm(constants.autoArmSpeed);
 
     calls = 0;
   }
@@ -41,9 +40,6 @@ public class AutoDriveCommand extends CommandBase {
   @Override
   public void execute() 
   {
-    m_subsystem.driveLeftMotors(constants.autoDriveSpeed);
-    m_subsystem.driveRightMotors(constants.autoDriveSpeed);
-
     calls++;
   }
 
@@ -51,8 +47,7 @@ public class AutoDriveCommand extends CommandBase {
   @Override
   public void end(boolean interrupted) 
   {
-    m_subsystem.driveLeftMotors(0);
-    m_subsystem.driveRightMotors(0);
+    m_subsystem.moveArm(0);
   }
 
   // Returns true when the command should end.
