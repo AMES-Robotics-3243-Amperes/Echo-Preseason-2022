@@ -5,10 +5,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import frc.robot.commands.ArmCommand;
-import frc.robot.commands.DriveCommand;
-import frc.robot.commands.ElevatorCommand;
-import frc.robot.commands.SequentialCommand;
+import frc.robot.commands.control.ArmCommand;
+import frc.robot.commands.control.DriveCommand;
+import frc.robot.commands.control.ElevatorCommand;
+import frc.robot.commands.autonomous.SequentialCommand;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
