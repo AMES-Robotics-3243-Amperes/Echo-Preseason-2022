@@ -5,14 +5,14 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
-
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class AutoArmCommand extends CommandBase {
   
   // used to manage how long the auto runs
-  private long calls = 0;
+  private Timer clock;
 
   // subsystem
   private final ArmSubsystem m_subsystem;
@@ -22,6 +22,7 @@ public class AutoArmCommand extends CommandBase {
   /** Creates a new AutoDrive. */
   public AutoArmCommand(ArmSubsystem subsystem) {
     m_subsystem = subsystem;
+    clock = new Timer();
 
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -33,15 +34,12 @@ public class AutoArmCommand extends CommandBase {
   {
     m_subsystem.moveArm(constants.autoArmSpeed);
 
-    calls = 0;
+    clock.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() 
-  {
-    calls++;
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
@@ -53,6 +51,6 @@ public class AutoArmCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return (calls >= constants.driveCalls) ? true : false;
+    return clock.get() > constants.autoArmTime;
   }
 }

@@ -42,7 +42,7 @@ public final class Constants {
     public final double elevatorSpeedUpManual = 0.5;
     public final double elevatorSpeedDown = 0.15;
 
-    // auto stuff
-    public final int driveCalls = 50;
-    public final double autoArmSpeed = 0.3;
+    // auto stuff (time is in seconds)
+    public final int autoArmTime = 2;
+    public final double autoArmSpeed = 0.4;
 }
