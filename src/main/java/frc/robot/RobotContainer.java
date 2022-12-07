@@ -59,6 +59,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new SequentialCommand(m_ArmSubsystem);
+    return new SequentialCommand(m_ArmSubsystem, m_ElevatorSubsystem);
   }
 }

@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -13,6 +14,7 @@ public class ElevatorSubsystem extends SubsystemBase {
 
   // motor definitions :)
   private VictorSP elevatorTopMotor = new VictorSP(constants.elevatorTopMotorChannel);
+  private DigitalInput limitSwitch = new DigitalInput(constants.elevatorLimitSwitchChannel);
 
   /** Creates a new ElevatorSubsystem. */
   public ElevatorSubsystem() {}
@@ -24,6 +26,8 @@ public class ElevatorSubsystem extends SubsystemBase {
       elevatorTopMotor.set(input);
     // elevatorBottomMotor.set(input);
   }
+
+  public boolean readLimitSwitch() { return limitSwitch.get(); }
 
   @Override
   public void periodic() {

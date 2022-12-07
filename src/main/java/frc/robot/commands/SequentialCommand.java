@@ -6,15 +6,16 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ElevatorSubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class SequentialCommand extends SequentialCommandGroup {
   /** Creates a new AutoCommand. */
-  public SequentialCommand(ArmSubsystem subsystem) {
+  public SequentialCommand(ArmSubsystem armSubsystem, ElevatorSubsystem elevatorSubsystem) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new AutoArmCommand(subsystem));
+    addCommands(new AutoArmCommand(armSubsystem), new AutoElevatorCommand(elevatorSubsystem));
   }
 }

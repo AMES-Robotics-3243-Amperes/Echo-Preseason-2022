@@ -4,7 +4,6 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ElevatorSubsystem;
@@ -29,9 +28,6 @@ public class ElevatorCommand extends CommandBase {
   JoyUtil driveController;
   JoyUtil bucketController;
 
-  // limit switch
-  DigitalInput limitSwitch = new DigitalInput(constants.elevatorLimitSwitchChannel);
-
   /** Creates a new ElevatorCommand. */
   public ElevatorCommand(ElevatorSubsystem subsystem, JoyUtil _driveController, JoyUtil _bucketController) {
     driveController = _driveController;
@@ -49,7 +45,7 @@ public class ElevatorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean isAtTop = limitSwitch.get();
+    boolean isAtTop = m_subsystem.readLimitSwitch();
     double moveSpeed = 0;
 
     moveSpeed += driveController.getYButton() ? 1 : 0;
