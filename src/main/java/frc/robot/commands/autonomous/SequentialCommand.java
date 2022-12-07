@@ -13,9 +13,10 @@ import frc.robot.subsystems.ElevatorSubsystem;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class SequentialCommand extends SequentialCommandGroup {
   /** Creates a new AutoCommand. */
-  public SequentialCommand(ArmSubsystem armSubsystem, ElevatorSubsystem elevatorSubsystem) {
+  public SequentialCommand(ArmSubsystem armSubsystem, ElevatorSubsystem elevatorSubsystem, DriveTrainSubsystem driveSubsystem)
+  {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new AutoArmCommand(armSubsystem), new AutoElevatorCommand(elevatorSubsystem));
+    addCommands(new AutoArmCommand(armSubsystem), new AutoElevatorCommand(elevatorSubsystem), new AutoDriveCommand(driveSubsystem));
   }
 }

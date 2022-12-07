@@ -33,9 +33,9 @@ public final class Constants {
     public final int elevatorLimitSwitchChannel = 0;
 
     // speeds
-    public final double driveSpeed = 0.361;
-    public final double rightTriggerSpeedModifier = 1.5;
-    public final double leftTriggerSpeedModifier = 0.5;
+    public final double driveSpeed = 0.37;
+    public final double rightTriggerSpeedModifier = 1.6;
+    public final double leftTriggerSpeedModifier = 0.4;
 
     public final double armSpeed = 0.5;
     public final double elevatorSpeedUpLimit = 0.38;
@@ -47,4 +47,7 @@ public final class Constants {
     public final double autoArmSpeed = 0.4;
 
     public final double autoElevatorSpeed = 0.3;
+
+    public final double autoDriveTime = 2.2;
+    public final double autoDriveSpeed = 0.4;
 }
