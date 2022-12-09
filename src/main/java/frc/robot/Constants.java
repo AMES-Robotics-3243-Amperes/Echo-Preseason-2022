@@ -40,7 +40,7 @@ public final class Constants {
     public final double armSpeed = 0.5;
     public final double elevatorSpeedUpLimit = 0.38;
     public final double elevatorSpeedUpManual = 0.5;
-    public final double elevatorSpeedDown = 0.15;
+    public final double elevatorSpeedDown = 0.3;
 
     // auto stuff (time is in seconds)
     public final double autoArmTime = 2.2;
@@ -48,6 +48,6 @@ public final class Constants {
 
     public final double autoElevatorSpeed = 0.35;
 
-    public final double autoDriveTime = 1.25;
+    public final double autoDriveTime = 1.35;
     public final double autoDriveSpeed = 0.35;
 }
