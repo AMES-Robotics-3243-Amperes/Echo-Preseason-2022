@@ -13,7 +13,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    // fun driving stuff (keep deadzones positive)
+    // fun deadzone stuff (keep deadzones positive)
     public final double innerDeadzone = 0.06;
     public final double outerDeadzone = 0.08;
 
@@ -33,9 +33,9 @@ public final class Constants {
     public final int elevatorLimitSwitchChannel = 0;
 
     // speeds
-    public final double driveSpeed = 0.37;
+    public final double driveSpeed = 0.35;
     public final double rightTriggerSpeedModifier = 1.6;
-    public final double leftTriggerSpeedModifier = 0.4;
+    public final double leftTriggerSpeedModifier = 0.55;
 
     public final double armSpeed = 0.5;
     public final double elevatorSpeedUpLimit = 0.38;
@@ -43,11 +43,11 @@ public final class Constants {
     public final double elevatorSpeedDown = 0.15;
 
     // auto stuff (time is in seconds)
-    public final double autoArmTime = 2.0;
-    public final double autoArmSpeed = 0.4;
+    public final double autoArmTime = 2.2;
+    public final double autoArmSpeed = 0.53;
 
-    public final double autoElevatorSpeed = 0.3;
+    public final double autoElevatorSpeed = 0.35;
 
-    public final double autoDriveTime = 2.2;
-    public final double autoDriveSpeed = 0.4;
+    public final double autoDriveTime = 1.25;
+    public final double autoDriveSpeed = 0.35;
 }
