@@ -5,6 +5,7 @@
 package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -13,11 +14,12 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class SequentialCommand extends SequentialCommandGroup {
+  private Constants constants = new Constants();
   /** Creates a new AutoCommand. */
   public SequentialCommand(ArmSubsystem armSubsystem, ElevatorSubsystem elevatorSubsystem, DriveTrainSubsystem driveSubsystem)
   {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new AutoArmCommand(armSubsystem), new AutoDriveCommand(driveSubsystem), new AutoElevatorCommand(elevatorSubsystem));
+    addCommands(new AutoArmCommand(armSubsystem), new AutoDriveCommand(driveSubsystem, constants.autoDriveTime1), new AutoElevatorCommand(elevatorSubsystem), new AutoDriveCommand(driveSubsystem, constants.autoDriveTime2), new AutoArmCommand2(armSubsystem), new AutoDriveReverseCommand(driveSubsystem));
   }
 }

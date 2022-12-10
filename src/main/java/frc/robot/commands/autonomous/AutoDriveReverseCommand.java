@@ -9,7 +9,7 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.Timer;
 
-public class AutoDriveCommand extends CommandBase {
+public class AutoDriveReverseCommand extends CommandBase {
   // constants :)
   private Constants constants = new Constants();
 
@@ -22,10 +22,9 @@ public class AutoDriveCommand extends CommandBase {
   double _time;
 
   /** Creates a new AutoDriveCommand. */
-  public AutoDriveCommand(DriveTrainSubsystem subsystem, double time)
+  public AutoDriveReverseCommand(DriveTrainSubsystem subsystem)
   {
     m_subsystem = subsystem;
-    _time = time;
     clock = new Timer();
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -36,8 +35,8 @@ public class AutoDriveCommand extends CommandBase {
   @Override
   public void initialize() 
   {
-    m_subsystem.driveLeftMotors(constants.autoDriveSpeed);
-    m_subsystem.driveRightMotors(-constants.autoDriveSpeed);
+    m_subsystem.driveLeftMotors(constants.autoRetreatDriveSpeed);
+    m_subsystem.driveRightMotors(-constants.autoRetreatDriveSpeed);
     clock.start();
   }
 
@@ -57,6 +56,6 @@ public class AutoDriveCommand extends CommandBase {
   @Override
   public boolean isFinished()
   {
-    return clock.get() >= _time;
+    return clock.get() >= constants.autoRetreatDriveTime;
   }
 }

@@ -4,28 +4,24 @@
 
 package frc.robot.commands.autonomous;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.ArmSubsystem;
 
-public class AutoDriveCommand extends CommandBase {
-  // constants :)
-  private Constants constants = new Constants();
-
-  // used to measure execution time
-  Timer clock;
+public class AutoArmCommand2 extends CommandBase {
+  
+  // used to manage how long the auto runs
+  private Timer clock;
 
   // subsystem
-  DriveTrainSubsystem m_subsystem;
+  private final ArmSubsystem m_subsystem;
 
-  double _time;
+  Constants constants = new Constants();
 
-  /** Creates a new AutoDriveCommand. */
-  public AutoDriveCommand(DriveTrainSubsystem subsystem, double time)
-  {
+  /** Creates a new AutoDrive. */
+  public AutoArmCommand2(ArmSubsystem subsystem) {
     m_subsystem = subsystem;
-    _time = time;
     clock = new Timer();
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -34,10 +30,10 @@ public class AutoDriveCommand extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() 
+  public void initialize()
   {
-    m_subsystem.driveLeftMotors(constants.autoDriveSpeed);
-    m_subsystem.driveRightMotors(-constants.autoDriveSpeed);
+    m_subsystem.moveArm(constants.autoArmSpeed2);
+
     clock.start();
   }
 
@@ -47,16 +43,15 @@ public class AutoDriveCommand extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted)
+  public void end(boolean interrupted) 
   {
-    m_subsystem.driveLeftMotors(0);
-    m_subsystem.driveRightMotors(0);
+    m_subsystem.moveArm(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished()
   {
-    return clock.get() >= _time;
+    return clock.get() >= constants.autoArmTime2;
   }
 }

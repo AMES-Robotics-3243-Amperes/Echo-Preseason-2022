@@ -32,7 +32,7 @@ public class AutoArmCommand extends CommandBase {
   @Override
   public void initialize()
   {
-    m_subsystem.moveArm(constants.autoArmSpeed);
+    m_subsystem.moveArm(constants.autoArmSpeed1);
 
     clock.start();
   }
@@ -52,6 +52,6 @@ public class AutoArmCommand extends CommandBase {
   @Override
   public boolean isFinished()
   {
-    return clock.get() >= constants.autoArmTime;
+    return clock.get() >= constants.autoArmTime1;
   }
 }
